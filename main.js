@@ -31,7 +31,7 @@ let currentTool = 'brush';
 let brushColor = '#FF0000';
 let brushSize = 12;
 let currentStyle = 'normal';
-let showSkeleton = true;
+let showSkeleton = false;
 
 const undoStack = [];
 const MAX_UNDO = 10;
@@ -522,3 +522,61 @@ function handleGesture(landmarks, label, rw, rh, ox, oy, checkUIFn) {
         state.previousPoint = curr;
     }
 }
+
+// --- WIZARD LOGIC ---
+function setupWizard() {
+    const wizardOverlay = document.getElementById('wizard-overlay');
+    const wizardKey = 'pinta_kara_wizard_seen';
+
+    // Check if previously seen
+    if (localStorage.getItem(wizardKey)) {
+        return;
+    }
+
+    // Show Wizard
+    wizardOverlay.classList.remove('hidden');
+
+    let currentStep = 1;
+    const totalSteps = 3;
+    const nextBtn = document.getElementById('wizardNextBtn');
+    const steps = document.querySelectorAll('.wizard-step');
+    const dots = document.querySelectorAll('.dot');
+
+    nextBtn.addEventListener('click', () => {
+        if (currentStep < totalSteps) {
+            // Next Step
+            currentStep++;
+            updateWizardState();
+        } else {
+            // Finish
+            wizardOverlay.classList.add('hidden');
+            localStorage.setItem(wizardKey, 'true');
+        }
+    });
+
+    function updateWizardState() {
+        // Update Steps
+        steps.forEach(s => {
+            s.classList.remove('active');
+            if (parseInt(s.dataset.step) === currentStep) {
+                s.classList.add('active');
+            }
+        });
+
+        // Update Dots
+        dots.forEach((d, i) => {
+            d.classList.remove('active');
+            if (i === currentStep - 1) d.classList.add('active');
+        });
+
+        // Update Button Text
+        if (currentStep === totalSteps) {
+            nextBtn.innerText = "Começar!";
+        } else {
+            nextBtn.innerText = "Próximo";
+        }
+    }
+}
+
+// Initialize Wizard
+setupWizard();

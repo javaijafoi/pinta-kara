@@ -13,6 +13,33 @@
     <div id="app">
         <div id="toast-container"></div>
 
+        <!-- WIZARD OVERLAY -->
+        <div id="wizard-overlay" class="wizard-overlay hidden">
+            <div class="wizard-card">
+                <div class="wizard-step active" data-step="1">
+                    <div class="wizard-icon">👋</div>
+                    <h2>Bem-vindo ao Pinta-Kara!</h2>
+                    <p>Desenhe no ar usando apenas suas mãos e a webcam.</p>
+                </div>
+                <div class="wizard-step" data-step="2">
+                    <div class="wizard-icon">🤏</div>
+                    <h2>Como Desenhar</h2>
+                    <p>Faça um movimento de <strong>pinça</strong> (dedão + indicador) para desenhar na tela.</p>
+                </div>
+                <div class="wizard-step" data-step="3">
+                    <div class="wizard-icon">👆</div>
+                    <h2>Como Clicar</h2>
+                    <p>Mantenha a mão parada sobre um botão para clicar (Dwell) ou faça uma pinça rápida.</p>
+                </div>
+                <div class="wizard-dots">
+                    <div class="dot active"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+                <button id="wizardNextBtn" class="wizard-btn">Próximo</button>
+            </div>
+        </div>
+
         <!-- Hand Cursor (Visual Reference) -->
         <div id="hand-cursor-left" class="hand-cursor"></div>
         <div id="hand-cursor-right" class="hand-cursor"></div>
@@ -107,7 +134,7 @@
 
                     <div style="flex-grow: 1;"></div>
 
-                    <button id="toggleDebugBtn" class="text-btn hover-target">HIDE SKELETON</button>
+                    <button id="toggleDebugBtn" class="text-btn hover-target">SHOW SKELETON</button>
                 </div>
             </div>
 
