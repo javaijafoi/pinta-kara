@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AR Hand Drawing</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div id="toast-container"></div>
+
+        <!-- Hand Cursor (Visual Reference) -->
+        <div id="hand-cursor-left" class="hand-cursor"></div>
+        <div id="hand-cursor-right" class="hand-cursor"></div>
+
+        <div id="ui-layer">
+
+            <div class="dock">
+
+                <!-- ROW 1 -->
+                <div class="dock-row primary">
+                    <div class="color-picker">
+                        <button class="color-btn active hover-target" data-color="#FF0000"
+                            style="background-color: #FF0000;"></button>
+                        <button class="color-btn hover-target" data-color="#FF8800"
+                            style="background-color: #FF8800;"></button>
+                        <button class="color-btn hover-target" data-color="#FFFF00"
+                            style="background-color: #FFFF00;"></button>
+                        <button class="color-btn hover-target" data-color="#00FF00"
+                            style="background-color: #00FF00;"></button>
+                        <button class="color-btn hover-target" data-color="#00FFFF"
+                            style="background-color: #00FFFF;"></button>
+                        <button class="color-btn hover-target" data-color="#0000FF"
+                            style="background-color: #0000FF;"></button>
+                        <button class="color-btn hover-target" data-color="#FF00FF"
+                            style="background-color: #FF00FF;"></button>
+                        <button class="color-btn hover-target" data-color="#FFFFFF"
+                            style="background-color: #FFFFFF;"></button>
+                    </div>
+
+                    <div class="vertical-divider"></div>
+
+                    <div class="style-picker">
+                        <button class="style-btn active hover-target" data-style="normal" title="Normal">
+                            <div class="style-preview normal"></div>
+                        </button>
+                        <button class="style-btn hover-target" data-style="neon" title="Neon">
+                            <div class="style-preview neon"></div>
+                        </button>
+                        <button class="style-btn hover-target" data-style="rainbow" title="Rainbow">
+                            <div class="style-preview rainbow"></div>
+                        </button>
+                        <button class="style-btn hover-target" data-style="spray" title="Spray">
+                            <div class="style-preview spray"></div>
+                        </button>
+                        <button class="style-btn hover-target" data-style="dynamic" title="Dynamic">
+                            <div class="style-preview dynamic"></div>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ROW 2 -->
+                <div class="dock-row secondary">
+                    <div class="action-group">
+                        <button id="undoBtn" class="icon-btn hover-target" title="Undo">
+                            <i class="ph ph-arrow-u-up-left"></i>
+                        </button>
+                        <button id="clearBtn" class="icon-btn danger hover-target" title="Clear All">
+                            <i class="ph ph-trash"></i>
+                        </button>
+                        <button id="snapshotBtn" class="icon-btn hover-target" title="Save Snapshot">
+                            <i class="ph ph-camera"></i>
+                        </button>
+                    </div>
+
+                    <div class="vertical-divider"></div>
+
+                    <div class="tool-picker">
+                        <button class="tool-btn active hover-target" data-tool="brush" title="Brush">
+                            <i class="ph ph-paint-brush"></i>
+                        </button>
+                        <button class="tool-btn hover-target" data-tool="eraser" title="Eraser">
+                            <i class="ph ph-eraser"></i>
+                        </button>
+                    </div>
+
+                    <div class="vertical-divider"></div>
+
+                    <div class="size-picker">
+                        <button class="size-btn hover-target" data-size="4" title="Small">
+                            <div style="width: 4px; height: 4px; background: #fff; border-radius: 50%;"></div>
+                        </button>
+                        <button class="size-btn active hover-target" data-size="12" title="Medium">
+                            <div style="width: 12px; height: 12px; background: #fff; border-radius: 50%;"></div>
+                        </button>
+                        <button class="size-btn hover-target" data-size="24" title="Large">
+                            <div style="width: 20px; height: 20px; background: #fff; border-radius: 50%;"></div>
+                        </button>
+                        <button class="size-btn hover-target" data-size="40" title="Extra Large">
+                            <div style="width: 32px; height: 32px; background: #fff; border-radius: 50%;"></div>
+                        </button>
+                    </div>
+
+                    <div style="flex-grow: 1;"></div>
+
+                    <button id="toggleDebugBtn" class="text-btn hover-target">HIDE SKELETON</button>
+                </div>
+            </div>
+
+            <div class="instructions">
+                <p>Pinch fingers to draw. Click buttons with your hand!</p>
+            </div>
+
+            <button id="enableWebcamButton" class="start-btn visible">START CAMERA</button>
+        </div>
+
+        <div id="canvas-container">
+            <video id="webcam" autoplay playsinline></video>
+            <canvas id="ink_canvas"></canvas>
+            <canvas id="debug_canvas"></canvas>
+        </div>
+    </div>
+    <script type="module" src="/main.js"></script>
+</body>
+
+</html>
