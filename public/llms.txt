@@ -1,0 +1,15 @@
+# Pinta-Kara
+
+> Desenhe no ar com as mãos usando só a webcam: junte polegar e indicador para pintar. A visão computacional roda no navegador e nenhuma imagem sai do seu computador.
+
+O Pinta-Kara é um app de desenho no ar: a webcam acompanha as duas mãos (MediaPipe Hand Landmarker) e a pinça entre polegar e indicador desenha na tela. Os botões de cor e ação também respondem à mão. Tudo roda no navegador e nenhuma imagem da câmera sai do computador do usuário.
+
+Feito por Peter (@javaijafoi), desenvolvedor brasileiro. Site em inglês, com interface simples.
+
+## Links
+
+- [Abrir Pinta-Kara](https://pinta-kara.vercel.app/)
+- [Portfólio do Peter](https://javaijafoi.vercel.app): Todos os projetos do Peter (jogos, histórias interativas e experimentos com IA).
+- [Código deste projeto](https://github.com/javaijafoi/pinta-kara): Repositório público no GitHub.
+- [GitHub do Peter](https://github.com/javaijafoi): Perfil do autor.
+- [llms.txt do portfólio](https://javaijafoi.vercel.app/llms.txt): Guia de todos os projetos para IAs.
