@@ -1,0 +1,15 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "pinta-kara.vercel.app"
+        }
+      ],
+      "destination": "https://pintakara.javaijafoi.dev/:path*",
+      "statusCode": 301
+    }
+  ]
+}
