@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://pinta-kara.vercel.app/sitemap.xml
+Sitemap: https://pintakara.javaijafoi.dev/sitemap.xml
